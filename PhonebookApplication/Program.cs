@@ -6,7 +6,7 @@ namespace PhonebookApplication
     {
         static void Main(string[] args)
         {
-           
+            ConsoleLogging.MainConsole();
         }
     }
 }
