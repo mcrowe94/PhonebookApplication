@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PhonebookApplication
 {
@@ -6,7 +7,10 @@ namespace PhonebookApplication
     {
         static void Main(string[] args)
         {
-            ConsoleLogging.MainConsole();
+            List<Contact> contacts = new List<Contact>();
+
+
+            ConsoleLogging.MainConsole(contacts);
         }
     }
 }
