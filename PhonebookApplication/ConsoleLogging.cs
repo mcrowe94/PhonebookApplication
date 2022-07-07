@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,7 @@ namespace PhonebookApplication
 
         public static void ExitMessage()
         {
-            ConsoleLogging.PassMessage("Your contacts have been saved! Have a nice day!");
+            ConsoleLogging.PassMessage("Your contacts have been saved -- Have a nice day!");
             Environment.Exit(0);
         }
 

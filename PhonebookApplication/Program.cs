@@ -9,6 +9,7 @@ namespace PhonebookApplication
         {
             List<Contact> contacts = new List<Contact>();
 
+            contacts = FileManipulation.LoadContacts(contacts);
 
             ConsoleLogging.MainConsole(contacts);
         }

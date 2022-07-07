@@ -14,22 +14,23 @@ namespace PhonebookApplication
 
             Console.WriteLine();
 
-            ConsoleLogging.PassMessage("What would you like to do?\n 1: View all contacts.\n 2: Create a contact.\n 3: Update a contact.\n 4: Delete a contact.\n 5: Save and Exit.");
+            ConsoleLogging.PassMessage("What would you like to do?\n 1: View all contacts:\n 2: Create a contact:\n 3: Update a contact:\n 4: Delete a contact:\n 5: Save and Exit!");
 
             var userAnswer = Console.ReadLine();
 
             if (userAnswer == "1") //View All
             {
                 ConsoleLogging.CRUDForEachLoop(contacts);
-                ConsoleLogging.PassMessage("Press ENTER to continue!");
+                ConsoleLogging.PassMessage("Please press ENTER to continue....");
                 Console.ReadLine();
                 ConsoleLogging.ClearConsole();
 
             }
             else if (userAnswer == "2") //Create
             {
-                Console.WriteLine("2");
                 ConsoleLogging.ClearConsole();
+                var newContact = ContactCreator();
+                contacts.Add(newContact);
             }
             else if (userAnswer == "3") //Update
             {
@@ -43,12 +44,29 @@ namespace PhonebookApplication
             }
             else if (userAnswer == "5") //Save&Exit
             {
+                FileManipulation.SaveContacts(contacts);
                 ConsoleLogging.ExitMessage();
             }
             else //Not a Choice
             {
                 ConsoleLogging.InvalidResponse();
             }
+        }
+
+        public static Contact ContactCreator()
+        {
+            Console.WriteLine("Create a new contact:");
+            var contact = new Contact();
+            Console.WriteLine("What is the first name of your new contact?");
+            contact.FirstName = Console.ReadLine();
+            Console.WriteLine("What is the last name of your new contact?");
+            contact.LastName = Console.ReadLine();
+            Console.WriteLine("What is the new contacts phone number?");
+            contact.PhoneNumber = Console.ReadLine();
+            Console.WriteLine("What is the new contacts email address?");
+            contact.EmailAddress = Console.ReadLine();
+
+            return contact;
         }
     }
 }
