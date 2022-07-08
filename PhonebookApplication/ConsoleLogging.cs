@@ -12,7 +12,7 @@ namespace PhonebookApplication
     {
         public static void Greeting()
         {
-           Console.WriteLine("Welcome to your Phonebook Application!");
+           ConsoleLogging.PassMessage("Welcome to your Phonebook Application!");
         }
 
         public static void PassMessage(string message)
@@ -50,9 +50,19 @@ namespace PhonebookApplication
             ConsoleLogging.ClearConsole();
             foreach(var contact in contacts)
             {
-                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}\n Email Address: {contact.EmailAddress}\n Phone Number: {contact.PhoneNumber}");
-                Console.WriteLine("------------------------------");
+                ConsoleLogging.PassMessage($"Name: {contact.FirstName} {contact.LastName}\n Email Address: {contact.EmailAddress}\n Phone Number: {contact.PhoneNumber}");
+                ConsoleLogging.PassMessage("------------------------------");
             }
+
         } 
+
+        public static void CRUDForLoop(List<Contact> contacts)
+        {
+            for(int i = 0; i < contacts.Count; i++)
+            {
+                ConsoleLogging.PassMessage($"ID: {i + 1} {contacts[i].FirstName} {contacts[i].LastName}\n Phone Number: {contacts[i].PhoneNumber}\n Email Address: {contacts[i].EmailAddress}");
+                ConsoleLogging.PassMessage("----------------------------");
+            }
+        }
     }
 }

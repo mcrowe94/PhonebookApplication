@@ -34,13 +34,13 @@ namespace PhonebookApplication
             }
             else if (userAnswer == "3") //Update
             {
-                Console.WriteLine("3");
                 ConsoleLogging.ClearConsole();
+                UpdateContact(contacts);
             }
             else if (userAnswer == "4") //Delete
             {
-                Console.WriteLine("4");
                 ConsoleLogging.ClearConsole();
+                DeleteContact(contacts);
             }
             else if (userAnswer == "5") //Save&Exit
             {
@@ -55,18 +55,36 @@ namespace PhonebookApplication
 
         public static Contact ContactCreator()
         {
-            Console.WriteLine("Create a new contact:");
+            ConsoleLogging.PassMessage("Create a new contact:");
             var contact = new Contact();
-            Console.WriteLine("What is the first name of your new contact?");
+            ConsoleLogging.PassMessage("What is the first name of your new contact?");
             contact.FirstName = Console.ReadLine();
-            Console.WriteLine("What is the last name of your new contact?");
+            ConsoleLogging.PassMessage("What is the last name of your new contact?");
             contact.LastName = Console.ReadLine();
-            Console.WriteLine("What is the new contacts phone number?");
+            ConsoleLogging.PassMessage("What is the new contacts phone number?");
             contact.PhoneNumber = Console.ReadLine();
-            Console.WriteLine("What is the new contacts email address?");
+            ConsoleLogging.PassMessage("What is the new contacts email address?");
             contact.EmailAddress = Console.ReadLine();
 
             return contact;
+        }
+
+        public static void UpdateContact(List<Contact> contacts)
+        {
+            ConsoleLogging.CRUDForLoop(contacts);
+            ConsoleLogging.PassMessage("What is the ID of the contact you would like to update?");
+            var contactID = Convert.ToInt32(Console.ReadLine());
+            contacts[contactID - 1] = ContactCreator();
+            ConsoleLogging.PassMessage("Success!");
+        }
+
+        public static void DeleteContact(List<Contact> contacts)
+        {
+            ConsoleLogging.CRUDForLoop(contacts);
+            ConsoleLogging.PassMessage($"What is the ID of the contact you would like to delete?");
+            var contactID = Convert.ToInt32(Console.ReadLine());
+            contacts.RemoveAt(contactID - 1);
+            ConsoleLogging.PassMessage("Success!");
         }
     }
 }
