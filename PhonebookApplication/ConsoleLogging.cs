@@ -12,7 +12,7 @@ namespace PhonebookApplication
     {
         public static void Greeting()
         {
-           ConsoleLogging.PassMessage("Welcome to your Phonebook Application!");
+           PassMessage("Welcome to your Phonebook Application!");
         }
 
         public static void PassMessage(string message)
@@ -31,7 +31,7 @@ namespace PhonebookApplication
 
         public static void ExitMessage()
         {
-            ConsoleLogging.PassMessage("Your contacts have been saved -- Have a nice day!");
+            PassMessage("Your contacts have been saved -- Have a nice day!");
             Environment.Exit(0);
         }
 
@@ -42,16 +42,16 @@ namespace PhonebookApplication
 
         public static void InvalidResponse()
         {
-            ConsoleLogging.PassMessage("Please enter a valid response!");
+            PassMessage("Please enter a valid response!");
         }
 
         public static void CRUDForEachLoop(List<Contact> contacts)
         {
-            ConsoleLogging.ClearConsole();
+            ClearConsole();
             foreach(var contact in contacts)
             {
-                ConsoleLogging.PassMessage($"Name: {contact.FirstName} {contact.LastName}\n Email Address: {contact.EmailAddress}\n Phone Number: {contact.PhoneNumber}");
-                ConsoleLogging.PassMessage("------------------------------");
+                PassMessage($"Name: {contact.FirstName} {contact.LastName}\n Email Address: {contact.EmailAddress}\n Phone Number: {contact.PhoneNumber}");
+                PassMessage("------------------------------");
             }
 
         } 
@@ -60,8 +60,8 @@ namespace PhonebookApplication
         {
             for(int i = 0; i < contacts.Count; i++)
             {
-                ConsoleLogging.PassMessage($"ID: {i + 1} {contacts[i].FirstName} {contacts[i].LastName}\n Phone Number: {contacts[i].PhoneNumber}\n Email Address: {contacts[i].EmailAddress}");
-                ConsoleLogging.PassMessage("----------------------------");
+                PassMessage($"ID: {i + 1} {contacts[i].FirstName} {contacts[i].LastName}\n Phone Number: {contacts[i].PhoneNumber}\n Email Address: {contacts[i].EmailAddress}");
+                PassMessage("----------------------------");
             }
         }
     }
